@@ -1,0 +1,35 @@
+{
+  "name": "spotifybackend",
+  "version": "1.0.0",
+  "description": "basic to deploy",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamalsaifi59/Spotify-clone.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "jamal saifi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamalsaifi59/Spotify-clone/issues"
+  },
+  "homepage": "https://github.com/jamalsaifi59/Spotify-clone#readme",
+  "dependencies": {
+    "cloudinary": "^2.10.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.0",
+    "multer": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.4"
+  }
+}
