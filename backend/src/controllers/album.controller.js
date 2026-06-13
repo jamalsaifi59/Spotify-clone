@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary"
-import Album from "../models/Album.js";
-import Song from './../models/Song.js';
+import Album from "../models/album.model.js";
+import Song from '../models/songs.model.js';
 
 const addAlbum = async (req, res) => {
     try {
@@ -27,6 +27,10 @@ const addAlbum = async (req, res) => {
         res.status(400).json({ success: false, message: "Album Add Failed" })
     }
 }
+
+const getAlbums = async (req, res) => {
+  res.json({ message: "Albums" });
+};
 
 const listAlbum = async (req, res) => {
     try {
@@ -56,4 +60,4 @@ const removeAlbum = async (req, res) => {
     }
 }
 
-export { addAlbum, listAlbum, removeAlbum }
+export { addAlbum, listAlbum, removeAlbum, getAlbums}
