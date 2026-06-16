@@ -1,10 +1,10 @@
 import { addSong, listSong, removeSong } from "../controllers/songs.controller.js";
-import express from "express";
+import {Router} from "express";
 import upload from "../middleware/multer.middleware.js";
 
-const songRouter = express.Router();
+const songRouter = Router();
 
-songRouter.post('/add', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'audio', maxCount: 1 }]), addSong);
-songRouter.get('/list', listSong);
-songRouter.delete('/remove/:id', removeSong)
+songRouter.route('/add').post (upload.fields([{ name: 'image', maxCount: 1 }, { name: 'audio', maxCount: 1 }]), addSong);
+songRouter.route('/list').get(listSong);
+songRouter.route('/remove/:id').delete (removeSong)
 export default songRouter;
