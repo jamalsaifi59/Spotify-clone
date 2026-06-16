@@ -11,21 +11,15 @@ const app = express();
 const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
-console.log('step 1')
 
 //middlewares
 app.use(express.json())
-console.log('step 2')
 app.use(cors())
-console.log('step 3')
 
 //initializing routes
 app.use("/api/song", songRouter)
-console.log('step 4')
 app.use("/api/album", albumRouter)
-console.log('step 5')
-app.get('/', (req, res) => res.send("API Working"));
-console.log('step 6')
+app.get('/', (req, res) => res.send("Spotify Backend Running"));
 
 
 app.listen(port, () => console.log(`Server started on ${port}`));
