@@ -1,33 +1,27 @@
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
-import MusicCard from "./components/MusicCard";
-import songs from "./data/songs";
+import { useContext } from 'react'
+import Display from './components/Display'
+import Player from './components/Player'
+import Sidebar from './components/Sidebar'
+import { PlayerContext } from './context/PlayerContext'
 
-function App() {
+const App = () => {
+
+  const { audioRef, track, songsData } = useContext(PlayerContext);
+
   return (
-    <div className="flex bg-black min-h-screen">
-      <Sidebar />
-
-      <div className="flex-1 bg-gradient-to-b from-zinc-800 to-black">
-        <Navbar />
-
-        <div className="p-6">
-          <h2 className="text-white text-2xl font-bold mb-6">
-            Recently Played
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {songs.map((song) => (
-              <MusicCard
-                key={song.id}
-                song={song}
-              />
-            ))}
+    <div className='h-screen bg-black'>
+      {songsData.lenght !== 0 ?
+        <>
+          <div className="h-[90%] flex">
+            <Sidebar />
+            <Display />
           </div>
-        </div>
-      </div>
+          <Player />
+        </>
+        : null}
+      <audio ref={audioRef} src={track ? track.file : ""} preload='none'></audio>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
