@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import Navbar from './Navbar'
-import { assets } from '../assets/frontend-assets/assets';
-import { PlayerContext } from '../context/PlayerContext';
+import { assets } from '../assest/frontend-assets/assests.js';
+import { PlayerContext } from '../context/playerContext.jsx';
 import { useContext, useEffect, useState } from 'react';
 
 const DisplayAlbum = ({ album }) => {

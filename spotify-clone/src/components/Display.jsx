@@ -1,8 +1,8 @@
 import { Route, Routes, useLocation } from "react-router-dom"
-import DisplayHome from "./DisplayHome"
-import DisplayAlbum from "./DisplayAlbum"
+import DisplayHome from "./DisplayHome.jsx"
+import DisplayAlbum from "./DisplayAlbum.jsx"
 import { useContext, useEffect, useRef } from "react"
-import { PlayerContext } from "../context/PlayerContext";
+import  { PlayerContext }  from "../context/playerContext.jsx";
 
 function Display() {
     const { albumsData } = useContext(PlayerContext);
