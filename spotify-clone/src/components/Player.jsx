@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { assets } from './../assets/frontend-assets/assets';
-import { PlayerContext } from '../context/PlayerContext';
+import { assets } from './../assest/frontend-assets/assests.js';
+import { PlayerContext } from '../context/playerContext.jsx';
 
 function Player() {
 

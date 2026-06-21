@@ -1,26 +1,47 @@
 import { useContext } from 'react'
-import Display from './components/Display'
-import Player from './components/Player'
-import Sidebar from './components/Sidebar'
-import { PlayerContext } from './context/PlayerContext'
+import Display from './components/Display.jsx'
+import Player from './components/Player.jsx'
+import Sidebar from './components/sidebar.jsx'
+import { PlayerContext } from './context/playerContext.jsx'
 
 const App = () => {
 
   const { audioRef, track, songsData } = useContext(PlayerContext);
 
   return (
-    <div className='h-screen bg-black'>
-      {songsData.lenght !== 0 ?
-        <>
-          <div className="h-[90%] flex">
-            <Sidebar />
-            <Display />
-          </div>
-          <Player />
-        </>
-        : null}
-      <audio ref={audioRef} src={track ? track.file : ""} preload='none'></audio>
+    <div className="h-screen bg-black text-white">
+  {songsData.length > 0 ? (
+    <>
+      <div className="h-[90%] flex">
+        <Sidebar />
+        <Display />
+      </div>
+      <Player />
+    </>
+  ) : (
+    <div className="flex items-center justify-center h-full">
+      No songs found in database
     </div>
+  )}
+
+  <audio
+    ref={audioRef}
+    src={track?.file || undefined}
+    preload="none"
+  />
+</div>
+    // <div className='h-screen bg-black'>
+    //   {songsData.length !== 0 ?
+    //     <>
+    //       <div className="h-[90%] flex">
+    //         <Sidebar />
+    //         <Display />
+    //       </div>
+    //       <Player />
+    //     </>
+    //     : null}
+    //   <audio ref={audioRef} src={track ? track.file : ""} preload='none'></audio>
+    // </div>
   )
 }
 
