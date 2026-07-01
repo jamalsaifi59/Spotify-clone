@@ -33,7 +33,6 @@ const PlayerContextProvider = (props) => {
   const handleVolumeChange = (e) => {
     const vol = parseFloat(e.target.value);
     setVolume(vol);
-    console.log("vol", vol);
     if (audioRef.current) {
       audioRef.current.volume = vol;
     }
