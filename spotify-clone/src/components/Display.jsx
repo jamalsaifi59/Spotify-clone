@@ -3,6 +3,7 @@ import DisplayHome from "./DisplayHome.jsx";
 import DisplayAlbum from "./DisplayAlbum.jsx";
 import { useContext, useEffect, useRef } from "react";
 import { PlayerContext } from "../context/playerContext.jsx";
+import Login from "../components/Loging.jsx";
 
 function Display() {
   const { albumsData } = useContext(PlayerContext);
@@ -39,6 +40,8 @@ function Display() {
               />
             }
           />
+          <Route path="/login" element={<Login />} />
+          
         </Routes>
       ) : null}
     </div>

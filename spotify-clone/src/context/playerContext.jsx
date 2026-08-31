@@ -173,15 +173,32 @@ const PlayerContextProvider = (props) => {
     });
   };
 
-  const nextSong = async () => {
-    songsData.map(async (item, index) => {
-      if (track._id === item._id && index < songsData.length - 1) {
-        await setTrack(songsData[index + 1]);
-        await audioRef.current.play();
-        setPlayStatus(true);
-      }
-    });
-  };
+
+  const nextSong = () => {
+  if (!songsData || songsData.length === 0 || !track) return;
+
+  const currentIndex = songsData.findIndex(
+    (item) => item._id === track._id
+  );
+
+  if (currentIndex === -1) return;
+
+  if (currentIndex < songsData.length - 1) {
+    const nextTrack = songsData[currentIndex + 1];
+
+    setTrack(nextTrack);
+    setPlayStatus(true);
+  }
+};
+  // const nextSong = async () => {
+  //   songsData.map(async (item, index) => {
+  //     if (track._id === item._id && index < songsData.length - 1) {
+  //       await setTrack(songsData[index + 1]);
+  //       await audioRef.current.play();
+  //       setPlayStatus(true);
+  //     }
+  //   });
+  // };
 
   const seekSong = async (e) => {
     audioRef.current.currentTime =
