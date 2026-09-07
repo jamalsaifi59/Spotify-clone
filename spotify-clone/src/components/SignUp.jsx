@@ -5,22 +5,25 @@ import { useNavigate } from "react-router-dom";
 function Signup() {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
+    console.log("signup click button err")
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/users/register",
+        "http://localhost:4000/api/user/register",
         {
-          name,
+          fullname,
+          username,
           email,
           password,
         }
       );
+      console.log("server side response :", response.data)
 
       if (response.data.success) {
         alert("Signup Successful!");
@@ -29,6 +32,8 @@ function Signup() {
         navigate("/login");
       }
     } catch (error) {
+      console.log("signup ERROR :", error)
+      console.log("SERVER ERROR :",error.response?.data)
       alert(
         error.response?.data?.message ||
           "Signup failed"
@@ -48,9 +53,16 @@ function Signup() {
 
         <input
           type="text"
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="Full name"
+          value={fullname}
+          onChange={(e) => setFullname(e.target.value)}
+          className="w-full p-3 mb-4 rounded text-white"
+        />
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           className="w-full p-3 mb-4 rounded text-white"
         />
 
