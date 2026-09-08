@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./navbar.jsx";
 import { assets } from "../assest/frontend-assets/assests.js";
 import { PlayerContext } from "../context/playerContext.jsx";
 import { useContext, useEffect, useState } from "react";
