@@ -54,7 +54,10 @@ const PlayerContextProvider = (props) => {
       if (!audioRef.current) return;
 
       audioRef.current.ontimeupdate = () => {
-        if (!audioRef.current.duration) return;
+        if (!audioRef.current || !seekBar.current) return;
+
+        if (!audioRef.current.duration || isNaN(audioRef.current.duration))
+          return;
 
         seekBar.current.style.width =
           Math.floor(
@@ -173,23 +176,20 @@ const PlayerContextProvider = (props) => {
     });
   };
 
-
   const nextSong = () => {
-  if (!songsData || songsData.length === 0 || !track) return;
+    if (!songsData || songsData.length === 0 || !track) return;
 
-  const currentIndex = songsData.findIndex(
-    (item) => item._id === track._id
-  );
+    const currentIndex = songsData.findIndex((item) => item._id === track._id);
 
-  if (currentIndex === -1) return;
+    if (currentIndex === -1) return;
 
-  if (currentIndex < songsData.length - 1) {
-    const nextTrack = songsData[currentIndex + 1];
+    if (currentIndex < songsData.length - 1) {
+      const nextTrack = songsData[currentIndex + 1];
 
-    setTrack(nextTrack);
-    setPlayStatus(true);
-  }
-};
+      setTrack(nextTrack);
+      setPlayStatus(true);
+    }
+  };
   // const nextSong = async () => {
   //   songsData.map(async (item, index) => {
   //     if (track._id === item._id && index < songsData.length - 1) {
